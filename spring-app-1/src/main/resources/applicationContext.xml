@@ -17,6 +17,9 @@
           class="org.spring.RapMusic">
     </bean>
     <bean id="musicPlayer"
+          init-method="init"
+          destroy-method="destroy"
+          factory-method="getMusicPlayer"
           class="org.spring.MusicPlayer">
         <property name="musicList">
             <list>

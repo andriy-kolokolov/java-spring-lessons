@@ -8,6 +8,20 @@ public class MusicPlayer {
     private String songName;
     private int volume;
 
+    private MusicPlayer() {};
+
+    public static MusicPlayer getMusicPlayer() {
+        return new MusicPlayer();
+    }
+
+    public void init() {
+        System.out.println(this.getClass().getSimpleName() + ": initialization");
+    }
+
+    public void destroy() {
+        System.out.println(this.getClass().getSimpleName() + ": destruction");
+    }
+
     public void playMusic() {
         for (Music music :
                 this.musicList) {
