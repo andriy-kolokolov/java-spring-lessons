@@ -2,16 +2,21 @@ package org.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
-    private String songName;
+    @Value("${musicPlayer.name}")
+    public String name;
+    @Value("${musicPlayer.volume}")
     private int volume;
+    private List<Music> musicList = new ArrayList<>();
     private Music music1;
     private Music music2;
     private Music music3;
@@ -25,10 +30,12 @@ public class MusicPlayer {
         this.music3 = music3;
     }
 
+    @PostConstruct
     public void init() {
         System.out.println(this.getClass().getSimpleName() + ": initialization");
     }
 
+    @PreDestroy
     public void destroy() {
         System.out.println(this.getClass().getSimpleName() + ": destruction");
     }
@@ -45,12 +52,12 @@ public class MusicPlayer {
         this.musicList = musicList;
     }
 
-    public String getSongName() {
-        return songName;
+    public String getName() {
+        return name;
     }
 
-    public void setSongName(String songName) {
-        this.songName = songName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getVolume() {
