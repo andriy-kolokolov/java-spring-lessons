@@ -10,7 +10,6 @@ import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
 public class MusicPlayer {
     @Value("${musicPlayer.name}")
     public String name;
@@ -21,7 +20,6 @@ public class MusicPlayer {
     private Music music2;
     private Music music3;
 
-    @Autowired
     public MusicPlayer(@Qualifier("rockMusic") Music music1,
                        @Qualifier("classicalMusic") Music music2,
                        @Qualifier("rapMusic") Music music3) {
