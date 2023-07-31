@@ -8,7 +8,7 @@ public class MusicPlayer {
     private String songName;
     private int volume;
 
-    private MusicPlayer() {};
+    private MusicPlayer() {}
 
     public static MusicPlayer getMusicPlayer() {
         return new MusicPlayer();
