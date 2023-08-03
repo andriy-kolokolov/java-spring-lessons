@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping(path = "/user")
 public class UserController {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @PostMapping(path = "/add")
     public @ResponseBody String addNewUser(@RequestParam String name
@@ -25,5 +28,10 @@ public class UserController {
     @GetMapping(path="/all")
     public @ResponseBody Iterable<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public @ResponseBody User getById( @PathVariable Long id) {
+        return userRepository.findById(id);
     }
 }

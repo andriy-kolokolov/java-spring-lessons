@@ -22,7 +22,7 @@ public class LoadDatabase {
         repository.deleteAll();
         log.warn("Users table dropped");
         return args -> {
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < 500; i++) {
                 String name = faker.name().fullName();
                 String email = faker.internet().emailAddress();
                 User user = new User();
